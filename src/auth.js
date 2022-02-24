@@ -3,7 +3,8 @@ const authClient = new OktaAuth({
   issuer: 'https://zerocurse.okta.com',
   clientId: '0oad2puordnhR5s2T696',
   scopes: ['openid', 'email', 'profile'],
-  redirectUri: window.location.origin + '/login/callback'
+  redirectUri: window.location.origin + '/login/callback',
+  // pkce: true
 })
 
 export default {
@@ -20,7 +21,7 @@ export default {
     }).then(transaction => {
       if (transaction.status === 'SUCCESS') {
         return authClient.token.getWithoutPrompt({
-          responseType: ['id_token', 'token'],
+          responseType: "['id_token', 'token']",
           sessionToken: transaction.sessionToken,
         }).then(response => {
           localStorage.token = response.tokens.accessToken

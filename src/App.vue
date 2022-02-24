@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <h1>Okta Vue & Auth JS Example</h1>
+    <h1>Vue & Okta AuthJS App</h1>
     <ul id="navbar">
       <li>
-        <router-link to="/register">Register</router-link>
+        <router-link v-if="!loggedIn" to="/register">Register</router-link>
+        <router-link v-if="loggedIn" to="/">Register</router-link>
       </li>
       <li>
         <router-link v-if="loggedIn" to="/logout">Log out</router-link>
